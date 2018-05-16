@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights schemaVersion="2014-05-30"
+  xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
+
+  <!-- The key from the portal: -->
+  <!--Instrumentation key is now provided through VSTS environment variables-->
+  <!--<InstrumentationKey>0b4b108b-2115-4853-a7e8-8f0bf565ac40</InstrumentationKey>-->
+
+  <!-- HTTP request component (not required for bare API) -->
+
+  <TelemetryModules>
+    <Add
+      type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
+    <Add
+      type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
+    <Add
+      type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
+  </TelemetryModules>
+
+  <!-- Events correlation (not required for bare API) -->
+  <!-- These initializers add context data to each event -->
+
+  <TelemetryInitializers>
+    <Add
+      type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+    <Add
+      type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
+    <Add
+      type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
+    <Add
+      type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
+    <Add
+      type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
+
+  </TelemetryInitializers>
+</ApplicationInsights>

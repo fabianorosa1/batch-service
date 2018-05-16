@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <property name="CONSOLE_LOG_PATTERN"
+    value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+  <!-- Send debug messages to System.out -->
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="STDOUT">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <!-- Minimum logging level to be presented in the console logs-->
+      <level>DEBUG</level>
+    </filter>
+    <encoder>
+      <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+      <charset>utf8</charset>
+    </encoder>
+  </appender>
+
+  <appender class="com.microsoft.applicationinsights.logback.ApplicationInsightsAppender"
+    name="aiAppender">
+  </appender>
+
+  <logger additivity="false" level="DEBUG" name="vportfolio.batch">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="aiAppender"/>
+  </logger>
+
+  <!-- By default, the level of the root level is set to DEBUG -->
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+  </root>
+</configuration>
